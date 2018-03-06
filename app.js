@@ -14,9 +14,7 @@ const routes = require('./routes');
 
 app.use(morgan('dev'));
 
-app.use(function(req, res, next){
-  var mimeType = mime.lookup(req.path)
-})
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.use(routes);
 
