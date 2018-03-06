@@ -13,7 +13,11 @@ app.get('/news', (req, res, next) => {
 })
 
 app.use((req, res, next) => {
-  console.log(req.verb, req.route);
+  // console.log(req.route.stack[0].method.toUpperCase(), req.route.path);
+  process.stdout.write(chalk.yellow(req.route.stack[0].method.toUpperCase()) + ' ' + chalk.cyan(req.route.path + '\n'));
+  // console.log(res.req.rawHeaders.method);
+  // console.log(res.req.rawHeaders);
+  process.stdout.write(res.statusCode.toString() + '\n');
   next()
 })
 
